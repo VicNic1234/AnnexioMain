@@ -1,0 +1,75 @@
+<h1 id="tableLabel">Country Details</h1>
+
+<p>This component demonstrates fetching data from the server.</p>
+
+<p *ngIf="!countrydetails"><em>Loading...</em></p>
+
+<div class="row" *ngIf="countrydetails">
+  <div class="col-md-12">
+    <div class="card">
+      <div class="card-head">
+        <div class="row p-3">
+          <div class="col-md-4">
+            <div class="form-group">
+              <label>Country Name</label>
+              <label class="form-control">{{countrydetails[0].name}}</label>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="form-group">
+              <label>Country Capital</label>
+              <label class="form-control">{{countrydetails[0].capital}}</label>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="form-group">
+              <label>Population</label>
+              <label class="form-control">{{countrydetails[0].population | number : '1.0-0'}}</label>
+            </div>
+          </div>
+        </div>
+
+
+        <div class="row p-3">
+          <div class="col-md-6">
+            <div class="form-group">
+              <label>Languages</label>
+              <label class="form-control">
+                <span *ngFor="let language of countrydetails[0].languages">
+                  {{language.name}}
+                </span>
+              
+              </label>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <label>Currencies</label>
+              <label class="form-control">
+                <span *ngFor="let currency of countrydetails[0].currencies">
+                  {{currency.name}} | {{currency.symbol}}
+                </span>
+              </label>
+            </div>
+          </div>
+          <div class="col-md-12 mt-3">
+            <div class="form-group">
+              <label>Borders</label>
+              <label class="form-control">
+                <span *ngFor="let border of countrydetails[0].borders">
+                  <a
+                     [routerLink]="['/fetch-data/code/', border]"
+                    > {{border}}</a> ,
+                </span>
+              </label>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-body"></div>
+      <div class="card-footer">
+
+      </div>
+    </div>
+  </div>
+</div>

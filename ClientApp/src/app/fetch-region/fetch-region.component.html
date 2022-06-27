@@ -1,0 +1,70 @@
+<h1 id="tableLabel">Region Details</h1>
+
+
+
+
+<div class="row">
+  <div class="col-md-12">
+    <div class="card">
+      <div class="card-head">
+        <div class="row p-3">
+          <div class="col-md-6">
+            <div class="form-group">
+              <label>Region Name</label>
+              <label class="form-control">{{regiondetails[0].region}}</label>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <label>Total Population</label>
+              <label class="form-control"></label>
+            </div>
+          </div>
+          <div class="col-md-12">
+            <div class="form-group">
+              <label>Countries</label>
+              <label class="form-control">
+                <span *ngFor="let country of regiondetails[0].countries">
+                  {{country.name}}
+                </span>
+              </label>
+            </div>
+          </div>
+        </div>
+
+
+        <div class="row p-3">
+          <div class="col-md-6">
+            <div class="form-group">
+              <label>Languages</label>
+              <label class="form-control">
+               
+              
+              </label>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <label>Currencies</label>
+              <label class="form-control">
+               
+              </label>
+            </div>
+          </div>
+          <div class="col-md-12 mt-3">
+            <div class="form-group">
+              <label>Borders</label>
+              <label class="form-control">
+               
+              </label>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-body"></div>
+      <div class="card-footer">
+
+      </div>
+    </div>
+  </div>
+</div>

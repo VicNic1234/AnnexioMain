@@ -1,0 +1,90 @@
+<h1 id="tableLabel">List of Countries</h1>
+
+<p>List of countries.</p>
+
+<p *ngIf="!countries"><em>Loading...</em></p>
+
+
+<div class="row" *ngIf="countries">
+  <div class="col-md-12">
+    <div class="card">
+      <div class="card-head">
+        <div class="col-md-12 mt-2">
+          <div class="row">
+            <div class="col-md-1 mr-3">
+              <select (change)="handlePageSizeChange($event)" class="form-control">
+                <option *ngFor="let size of pageSizes" [ngValue]="size">
+                  {{ size }}
+                </option>
+              </select>
+            </div>
+            <div class="col-md-8">
+              <div class="input-group mb-3">
+                <input type="text"
+                       class="form-control"
+                       placeholder="Enter search word"
+                       [(ngModel)]="name" (input)="search(name)" />
+                <div class="input-group-append">
+                  <button class="btn btn-secondary"
+                          type="button"
+                          (click)="searchTitle()">
+                    Search
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="row">
+          <div class="col-md-12">
+            <table class='table table-striped' aria-labelledby="tableLabel" *ngIf="countries">
+              <thead>
+                <tr>
+                  <th>Country</th>
+                  <th>Region</th>
+                  <th>Sub Region</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let country of countries | paginate : {
+                  itemsPerPage: pageSize,
+                  currentPage: page,
+                  totalItems: count
+                        };
+                  let i = index">
+
+
+
+                  <td><a
+
+                         [routerLink]="['/fetch-data/name/', country.name]"
+
+                        >{{ country.name }}</a></td>
+                  <td><a [routerLink]="['/view-region/', country.region]">{{ country.region }}</a></td>
+                  <td>{{ country.subregion }}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer">
+        <div class="col-md-12">
+
+          <pagination-controls
+          previousLabel="Prev"
+          nextLabel="Next"
+          [responsive]="true"
+          (pageChange)="handlePageChange($event)"
+        ></pagination-controls>
+        </div>
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+
